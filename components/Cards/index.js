@@ -19,7 +19,7 @@
 //
 // Use your function to create a card for each of the articles and add the card to the DOM.
 
-const cardMaker = (obj, topic) => {
+const cardMaker = (obj) => {
   const card = document.createElement("div");
   const headline = document.createElement("div");
   const author = document.createElement("div");
@@ -57,4 +57,7 @@ axios
         cardContainer.append(cardMaker(indArticle, article));
       });
     });
+  })
+  .catch((err) => {
+    console.log("Bruh!", err);
   });
