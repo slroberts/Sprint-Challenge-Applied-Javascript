@@ -22,43 +22,30 @@ function Carousel() {
   const carousel = document.createElement("div");
   const leftBtn = document.createElement("div");
   const rightBtn = document.createElement("div");
-  const imgOne = document.createElement("img");
-  const imgTwo = document.createElement("img");
-  const imgThree = document.createElement("img");
-  const imgFour = document.createElement("img");
+
+  const img = document.createElement("img");
 
   carousel.classList.add("carousel");
   leftBtn.classList.add("left-button");
   rightBtn.classList.add("right-button");
 
   leftBtn.textContent = "<";
-  imgOne.src = "./assets/carousel/mountains.jpeg";
-  imgTwo.src = "./assets/carousel/computer.jpeg";
-  imgThree.src = "./assets/carousel/trees.jpeg";
-  imgFour.src = "./assets/carousel/turntable.jpeg";
   rightBtn.textContent = ">";
 
-  const imgArray = [];
-  imgArray.push(imgOne, imgTwo, imgThree, imgFour);
+  const imgArray = [
+    "./assets/carousel/mountains.jpeg",
+    "./assets/carousel/computer.jpeg",
+    "./assets/carousel/trees.jpeg",
+    "./assets/carousel/turntable.jpeg",
+  ];
 
-  imgArray.forEach((img) => {
-    img.style.display = "block";
-  });
+  for (let i = 0; i < imgArray.length; i++) {
+    img.src = imgArray[i];
+  }
 
-  carousel.append(leftBtn, imgOne, imgTwo, imgThree, imgFour, rightBtn);
+  img.style.display = "block";
 
-  leftBtn.addEventListener("click", () => {
-    for (let i = 0; i < imgArray.length; i--) {
-      console.log(imgArray[i]);
-      return imgArray[i] - 1;
-    }
-  });
-  rightBtn.addEventListener("click", () => {
-    for (let i = 0; i > imgArray.length; i++) {
-      console.log(imgArray[i]);
-      return imgArray[i] + 1;
-    }
-  });
+  carousel.append(leftBtn, img, rightBtn);
 
   return carousel;
 }
